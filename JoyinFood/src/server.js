@@ -9,12 +9,11 @@ app.get("/", function(req, res) {
 });
  
 app.get("/signin", function(req, res) {
-  console.log("heeei1");
   res.send("OK");
 });
 
 app.post("/signin", function(req, res) {
-  console.log("heeei");
+  console.log(req.data);
   res.send("OK");
 });
  
