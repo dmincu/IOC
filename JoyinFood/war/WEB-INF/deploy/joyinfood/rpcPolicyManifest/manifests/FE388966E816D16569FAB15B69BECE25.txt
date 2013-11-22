@@ -1,2 +1,0 @@
-serviceClass: com.joyinfood.client.GreetingService
-path: 25972C1E13E2C4043BDCECFE6553DD98.gwt.rpc
