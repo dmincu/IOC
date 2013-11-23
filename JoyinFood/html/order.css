@@ -200,7 +200,7 @@ div.activeback {
 
 #sliderhorizontal  {
 	width: 75%;
-	overflow-x: scroll;
+	overflow-x: auto;
 	overflow-y: hidden;
 }
 
@@ -208,7 +208,7 @@ div.activeback {
 #slidervertical  {
 	height: 63%;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #fixed-div {

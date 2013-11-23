@@ -192,7 +192,7 @@ div.activeback {
 	border:2px solid;
 	border-radius:25px;
 	top:0;
-	left:66.66%;
+	right : 0;
 	box-shadow: 3px 3px 2px #888888;
 	position: fixed;
 }
