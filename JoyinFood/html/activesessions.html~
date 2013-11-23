@@ -33,34 +33,14 @@
 
     <div class="container" style="background-color: #5fb05f">
 
-      <div class = "leftmenu">
-        <p class = "divp"> Account </p>
+      <div class = "activeup">
+        <p class = "divp"> Active Sessions </p>
       </div>
-      <a href = "createSession.html">
-        <div class = "centermenu">
-          <p class = "divp"> Create Session </p>
-        </div>
-      </a>
-      <a href = "activesessions.html">
-      <div class = "rightmenu">
-        <p class = "divp"> Join Session </p>
+	  <div class = "activeback">
+        <p class = "divp"> Back </p>
       </div>
-      </a>
-      <div class = "oferte" id="sliderhorizontal">
-        <p class = "divp"> Oferte </p>
-      </div>
-      <div class = "mancare" id="slidervertical">
-        <p class = "divp"> Mancare </p>
-      </div>
-       <div class = "restaurante">
-        <p class = "divp"> Restaurante </p>
-      </div>
-      <div class = "categorii">
-        <p class = "divp"> Categorii </p>
-      </div>
-      <div class = "alergeni">
-        <p class = "divp"> Alergeni </p>
-      </div>
+      
+
     </div> <!-- /container -->
 
 
