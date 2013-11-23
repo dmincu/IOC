@@ -9,7 +9,7 @@
 
 .foodItem {
 	height: 100px;
-	background-color: darkkhaki;
+	background-color: #008B38;
 	border-radius: 5px;
 	margin: 5px;
 }
@@ -27,9 +27,9 @@
 	height: 20px; 
 	width: 100px;
 	outline:none; 
-	color: brown; 
+	color: black; 
 	float: left; 
-	background-color: lightblue; 
+	background-color: #8FBC8F; 
 	border-radius: 5px; 
 	border: solid 0px; 
 }
@@ -50,7 +50,7 @@
 	width: 70%;
 	outline:none; 
 	float: left; 
-	color: brown;
+	color: black;
 	background-color: cornsilk ; 
 	border-radius: 5px; 
 	border: solid 0px; 
@@ -60,7 +60,7 @@
 	margin: 4px;
 	width: 90%;
 	height: 20px;
-	background-color: lightblue;
+	background-color: #71C671;
 	border-radius: 5px;
 }
 
@@ -68,11 +68,11 @@
 	margin: 2px;
 	font-size: 14;
 	float: right;
-	color: brown;
+	color: #010101;
 }
 
 .goog-checkbox {
-  border: 1px solid darkcyan;
+  border: 1px solid #003300;
   display: -moz-inline-box;
   display: inline-block;
   height: 11px;
@@ -112,7 +112,7 @@
 }
 
 .message-joinAlert {
-	color: brown;
+	color: black;
 	text-align: center;
 	font-size: 20;
 	margin: 20px;
@@ -123,7 +123,7 @@
 	margin: 4px;
 	width: 160px;
 	height: 25px;
-	background-color: lightblue;
+	background-color: #8FBC8F;
 	border-radius: 5px;
 }
 
@@ -137,7 +137,7 @@
 .label-friend {
 	font-size: 14;
 	float: left;
-	color: brown;
+	color: black;
 	margin: 3px;
 }
 
@@ -205,7 +205,7 @@ div.alergeni {
 }
 
 div.leftmenu { 
-	background-color: lightblue;
+	background-color: lightgreen;
 	height: 5%;
 	width: 33%;
 	z-index: 9999;
@@ -217,7 +217,8 @@ div.leftmenu {
 }
 
 div.centermenu { 
-	background-color: lightblue;
+	background-color: lightgreen;
+	text-color: black;
 	height: 5%;
 	width: 33%;
 	z-index: 9999;
@@ -230,7 +231,8 @@ div.centermenu {
 }
 
 div.rightmenu { 
-	background-color: lightblue;
+	background-color: lightgreen;
+	text-color: black;
 	height: 5%;
 	width: 33%;
 	z-index: 9999;
@@ -242,7 +244,7 @@ div.rightmenu {
 }
 
 div.activeup {
-	background-color: lightblue;
+	background-color: #8FBC8F;
 	height: 30px;
 	width: 66%;
 	z-index: 9999;
@@ -254,7 +256,7 @@ div.activeup {
 }
 
 div.activeback {
-	background-color: lightblue;
+	background-color: #8FBC8F;
 	height: 30px;
 	width: 33%;
 	z-index: 9999;
@@ -267,6 +269,7 @@ div.activeback {
 
 p.divp {
 	text-align:center;
+	text-color: black;
 	font-weight:bold;
 	vertical-align: center;
 }
@@ -311,7 +314,8 @@ div.deplata {
 }
 
 div.alegeprieteni {
-	background-color: lightgreen;
+	background-color: #3c9e3c;
+	text-color: black;
 	width: 15%;
 	height: 50%;
 	top : 0;
@@ -324,7 +328,8 @@ div.alegeprieteni {
 }
 
 div.prietenialesi {
-	background-color: lightgreen;
+	background-color: #3c9e3c;
+	text-color: black;
 	width: 15%;
 	height: 45%;
 	top : 50%;

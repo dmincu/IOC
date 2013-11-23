@@ -9,12 +9,19 @@ app.get("/", function(req, res) {
 });
  
 app.get("/signin", function(req, res) {
-  res.send("OK");
+  console.log("haaaeefsd");
+  res.writeHead(200, {
+    'Content-type': 'text/plain'
+  });
+  res.end('Works'); 
 });
 
 app.post("/signin", function(req, res) {
-  console.log(req.data);
-  res.send("OK");
+  console.log("asdf");
+  res.writeHead(200, {
+    'Content-type': 'text/plain'
+  });
+  res.end('Works');
 });
  
 var port = 8080;
