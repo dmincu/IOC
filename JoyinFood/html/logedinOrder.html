@@ -75,7 +75,7 @@
     </div> <!-- /container -->
 
      <script>
-      //dummy database
+     //dummy database
      var restaurante = new Array();
      var restauranteUI = new Array();
      restaurante.push({name: "SpringTime"});
@@ -92,51 +92,63 @@
      categorii.push({name: "Fast-Food"});
 
      var produse = new Array();
-     produse.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "melci", categorie: "gatita"});
+     produse.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "miere", categorie: "Gatita"});
      produse.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
-              "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
+              "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
      var oferte = new Array();
-     oferte.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "melci", categorie: "gatita"});
+     oferte.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "miere", categorie: "Gatita"});
      oferte.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
-              "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
+              "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
 
-     function populate(data, containerName) {
-        var restauranteAll = true;
-        var categoriiAll = true;
-        var alergeniAll = true;
+    function populate(data, containerName) {
+        var restauranteAll = new Array();
+        var categoriiAll = new Array();
+        var alergeniAll = new Array();
 
         for (i = 0; i < restauranteUI.length; i++) {
           if (restauranteUI[i].checkbox.getChecked() === true) {
-            restauranteAll = false;
+            restauranteAll.push(restauranteUI[i].labelText);
           }
         }
 
         for (i = 0; i < categoriiUI.length; i++) {
           if (categoriiUI[i].checkbox.getChecked() === true) {
-            categoriiAll = false;
+            categoriiAll.push(categoriiUI[i].labelText);
           }
         }
 
          for (i = 0; i < alergeniUI.length; i++) {
           if (alergeniUI[i].checkbox.getChecked() === true) {
-            alergeniUI = false;
+            alergeniAll.push(alergeniUI[i].labelText);
           }
         }
 
+       // console.log(restauranteAll);
+       // console.log(alergeniAll);
+       // console.log(categoriiAll);
+
         var container = new goog.ui.Container();
         for (i = 0; i < data.length; i ++) {
+          var ok = true;
+          if (!((categoriiAll.length === 0) || (categoriiAll.indexOf(data[i].categorie) >= 0))) {
+            continue;
+          }
+
+          if (!((restauranteAll.length === 0) || (restauranteAll.indexOf(data[i].restaurant) >= 0))) {
+            continue;
+          }
+
+          if (!((alergeniAll.length === 0) || (alergeniAll.indexOf(data[i].alergeni) === -1))) {
+            continue;
+          }
 
           var foodItem = new joyinfood.foodItem(data[i]);
           container.addChild(foodItem, true);
         }
         container.render(document.getElementById(containerName));
      }
-
-     populate(produse, "mancarelogat");
-
-     populate(oferte, "ofertelogat");
 
       var container = new goog.ui.Container();
       for (i = 0; i < restaurante.length; i ++) {
@@ -161,6 +173,10 @@
         container.addChild(labeledCheckbox, true);
       }
       container.render(document.getElementById("alergeni"));
+
+      populate(produse, "mancarelogat");
+
+      populate(oferte, "ofertelogat");
     </script>
 
 

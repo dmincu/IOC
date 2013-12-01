@@ -7,7 +7,7 @@ goog.provide('joyinfood.labeledCheckbox');
 joyinfood.labeledCheckbox = function(labelText) {
 	goog.base(this);
 
-	this.labelText = labelText
+	this.labelText = labelText;
 	this.label = new goog.ui.Component();
 	this.checkbox = new goog.ui.Checkbox();
 };
@@ -24,29 +24,13 @@ joyinfood.labeledCheckbox.prototype.enterDocument = function() {
 
 	goog.dom.classes.add(this.checkbox.getElement(), 'checkbox-labeledCheckbox');
 
-	goog.events.listen(this.checkbox, goog.ui.Component.EventType.CHECK, this.handleCheckboxCheck, null, this);
-	goog.events.listen(this.checkbox, goog.ui.Component.EventType.UNCHECK, this.handleCheckboxUncheck, null, this);
-
+	goog.events.listen(this.checkbox, goog.ui.Component.EventType.CHANGE, this.handleCheckboxChange, null, this);
 };
 
-joyinfood.labeledCheckbox.prototype.handleCheckboxCheck = function () {
+joyinfood.labeledCheckbox.prototype.handleCheckboxChange = function () {
+	console.log(this.checkbox.getChecked());
 	var mancareElement = document.getElementById("mancare") !== null ? document.getElementById("mancare") : document.getElementById("mancarelogat");
 	mancareElement.innerHTML = "<p class = \"divp\"> Mancare </p>";
-
-	var mancareContainer = document.getElementById("mancare") !== null ? "mancare" : "mancarelogat";
-
-	var oferteElement = document.getElementById("oferte") !== null ? document.getElementById("oferte") : document.getElementById("ofertelogat");
-	oferteElement.innerHTML = "<p class = \"divp\"> Oferte </p>";
-
-	var oferteContainer = document.getElementById("oferte") !== null ? "oferte" : "ofertelogat";
-
-	populate(produse, mancareContainer);
-	populate(oferte, oferteContainer);
-}
-
-joyinfood.labeledCheckbox.prototype.handleCheckboxUncheck = function () {
-	var mancare = document.getElementById("mancare") !== null ? document.getElementById("mancare") : document.getElementById("mancarelogat");
-	mancare.innerHTML = "<p class = \"divp\"> Mancare </p>";
 
 	var mancareContainer = document.getElementById("mancare") !== null ? "mancare" : "mancarelogat";
 
