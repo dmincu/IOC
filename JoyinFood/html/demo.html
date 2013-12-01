@@ -16,8 +16,9 @@
       var container = new goog.ui.Container();
       for (i = 0; i < 2; i ++) {
     	  var foodItem = i % 2 == 0 ? 
-            new joyinfood.foodItem("sarmale.jpg", "Sarmale", "Aceasta mancare este un pisat..") :
-            new joyinfood.foodItem("pizza.jpg", "Pizza", "Aceasta mancare este alt pisat..");
+            new joyinfood.foodItem({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "melci", categorie: "gatita"}) :
+            new joyinfood.foodItem({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
+              "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
     	  container.addChild(foodItem, true);
       }
       container.addChild(new joyinfood.labeledCheckbox("PizzaHut"), true);

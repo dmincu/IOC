@@ -4,12 +4,16 @@ goog.require('goog.dom.classes');
 
 goog.provide('joyinfood.foodItem');
 
-joyinfood.foodItem = function(imageUrl, itemName, itemInformation) {
+joyinfood.foodItem = function(item) {
 	goog.base(this);
 
-	this.imageUrl = imageUrl;
-	this.itemName = itemName;
-	this.itemInformation = itemInformation;
+	this.imageUrl = item.imageUrl;
+	this.itemName = item.name;
+	this.itemInformation = item.information;
+	this.itemPrice = item.price;
+	this.restaurant = item.restaurant;
+	this.alergeni = item.alergeni;
+	this.category = item.category;
 	this.addToCartButton = new goog.ui.Button("Add To Cart");
 	this.imageElement = new goog.ui.Component();
 	this.description = new goog.ui.Component();
@@ -26,7 +30,7 @@ joyinfood.foodItem.prototype.enterDocument = function() {
 	this.imageElement.getElement().appendChild(img);
 	goog.dom.classes.add(this.imageElement.getElement(), 'image-foodItem');
 
-	this.description.getElement().innerText = this.itemName + "\n" + this.itemInformation;
+	this.description.getElement().innerHTML = "<b>" + this.itemName + "</b>(" + this.restaurant + ")<br>" + this.itemInformation + "<br><b>Pret: " + this.itemPrice;
 	goog.dom.classes.add(this.description.getElement(), 'description-foodItem');
 
 	goog.dom.classes.add(this.addToCartButton.getElement(), 'button-joyinfood');

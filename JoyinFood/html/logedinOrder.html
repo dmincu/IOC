@@ -65,7 +65,7 @@
       <div class = "categorii" id = "categorii">
         <p class = "divp"> Categorii </p>
       </div>
-      <div class = "alergeni" id = "alergeni"">
+      <div class = "alergeni" id = "alergeni">
         <p class = "divp"> Alergeni </p>
       </div>
       <div class = "deplata">
@@ -75,50 +75,58 @@
     </div> <!-- /container -->
 
      <script>
+     //dummy database
+     var restaurante = new Array();
+     restaurante.push({name: "SpringTime"});
+     restaurante.push({name: "PizzaHut"});
+
+     var alergeni = new Array();
+     alergeni.push({name: "lapte"});
+     alergeni.push({name: "miere"});
+
+     var categorii = new Array();
+     categorii.push({name: "Gatita"});
+     categorii.push({name: "Fast-Food"});
+
+     var produse = new Array();
+     produse.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "melci", categorie: "gatita"});
+     produse.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
+              "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
+
       var container = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        var foodItem = i % 2 == 0 ? 
-            new joyinfood.foodItem("sarmale.jpg", "Sarmale", "Aceasta mancare este un pisat..") :
-            new joyinfood.foodItem("pizza.jpg", "Pizza", "Aceasta mancare este alt pisat..");
+      for (i = 0; i < produse.length; i ++) {
+        var foodItem = new joyinfood.foodItem(produse[i]);
         container.addChild(foodItem, true);
       }
       container.render(document.getElementById("mancarelogat"));
 
       var container = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        var foodItem = i % 2 == 0 ? 
-            new joyinfood.foodItem("sarmale.jpg", "Sarmale", "Aceasta mancare este un pisat..") :
-            new joyinfood.foodItem("pizza.jpg", "Pizza", "Aceasta mancare este alt pisat..");
+      for (i = 0; i < produse.length; i ++) {
+        var foodItem = new joyinfood.foodItem(produse[i]);
         container.addChild(foodItem, true);
       }
       container.render(document.getElementById("ofertelogat"));
 
       var container = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        var labeledCheckbox = i % 2 == 0 ? 
-            new joyinfood.labeledCheckbox("PizzaHut") :
-            new joyinfood.labeledCheckbox("SpringTime");
+      for (i = 0; i < restaurante.length; i ++) {
+        var labeledCheckbox = new joyinfood.labeledCheckbox(restaurante[i].name);
         container.addChild(labeledCheckbox, true);
       }
       container.render(document.getElementById("restaurante"));
 
       var container = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        var labeledCheckbox = i % 2 == 0 ? 
-            new joyinfood.labeledCheckbox("PizzaHut") :
-            new joyinfood.labeledCheckbox("SpringTime");
+      for (i = 0; i < categorii.length; i ++) {
+        var labeledCheckbox = new joyinfood.labeledCheckbox(categorii[i].name);
         container.addChild(labeledCheckbox, true);
       }      
-      container.render(document.getElementById("alergeni"));
+      container.render(document.getElementById("categorii"));
 
       var container = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        var labeledCheckbox = i % 2 == 0 ? 
-            new joyinfood.labeledCheckbox("PizzaHut") :
-            new joyinfood.labeledCheckbox("SpringTime");
+      for (i = 0; i < alergeni.length; i ++) {
+        var labeledCheckbox = new joyinfood.labeledCheckbox(alergeni[i].name);
         container.addChild(labeledCheckbox, true);
       }
-      container.render(document.getElementById("categorii"));
+      container.render(document.getElementById("alergeni"));
     </script>
 
 
