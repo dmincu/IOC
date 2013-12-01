@@ -76,14 +76,17 @@
     <script>
       //dummy database
      var restaurante = new Array();
+     var restauranteUI = new Array();
      restaurante.push({name: "SpringTime"});
      restaurante.push({name: "PizzaHut"});
 
      var alergeni = new Array();
+     var alergeniUI = new Array();
      alergeni.push({name: "lapte"});
      alergeni.push({name: "miere"});
 
      var categorii = new Array();
+     var categoriiUI = new Array();
      categorii.push({name: "Gatita"});
      categorii.push({name: "Fast-Food"});
 
@@ -92,23 +95,52 @@
      produse.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
               "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
 
-      var container = new goog.ui.Container();
-      for (i = 0; i < produse.length; i ++) {
-        var foodItem = new joyinfood.foodItem(produse[i]);
-        container.addChild(foodItem, true);
-      }
-      container.render(document.getElementById("mancare"));
+     var oferte = new Array();
+     oferte.push({imageUrl: "sarmale.jpg", name: "Sarmale", information:"Aceasta mancare este un pisat..", price: "15.00 lei", restaurant: "PizzaHut", alergeni: "melci", categorie: "gatita"});
+     oferte.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
+              "SpringTime", alergeni: "lapte", cateogire: "fast-food"});
 
-      var container = new goog.ui.Container();
-      for (i = 0; i < produse.length; i ++) {
-        var foodItem = new joyinfood.foodItem(produse[i]);
-        container.addChild(foodItem, true);
-      }
-      container.render(document.getElementById("oferte"));
+
+     function populate(data, containerName) {
+        var restauranteAll = true;
+        var categoriiAll = true;
+        var alergeniAll = true;
+
+        for (i = 0; i < restauranteUI.length; i++) {
+          if (restauranteUI[i].checkbox.getChecked() === true) {
+            restauranteAll = false;
+          }
+        }
+
+        for (i = 0; i < categoriiUI.length; i++) {
+          if (categoriiUI[i].checkbox.getChecked() === true) {
+            categoriiAll = false;
+          }
+        }
+
+         for (i = 0; i < alergeniUI.length; i++) {
+          if (alergeniUI[i].checkbox.getChecked() === true) {
+            alergeniUI = false;
+          }
+        }
+
+        var container = new goog.ui.Container();
+        for (i = 0; i < data.length; i ++) {
+
+          var foodItem = new joyinfood.foodItem(data[i]);
+          container.addChild(foodItem, true);
+        }
+        container.render(document.getElementById(containerName));
+     }
+
+     populate(produse, "mancare");
+
+     populate(oferte, "oferte");
 
       var container = new goog.ui.Container();
       for (i = 0; i < restaurante.length; i ++) {
         var labeledCheckbox = new joyinfood.labeledCheckbox(restaurante[i].name);
+        restauranteUI.push(labeledCheckbox);
         container.addChild(labeledCheckbox, true);
       }
       container.render(document.getElementById("restaurante"));
@@ -116,6 +148,7 @@
       var container = new goog.ui.Container();
       for (i = 0; i < categorii.length; i ++) {
         var labeledCheckbox = new joyinfood.labeledCheckbox(categorii[i].name);
+        categoriiUI.push(labeledCheckbox);
         container.addChild(labeledCheckbox, true);
       }      
       container.render(document.getElementById("categorii"));
@@ -123,6 +156,7 @@
       var container = new goog.ui.Container();
       for (i = 0; i < alergeni.length; i ++) {
         var labeledCheckbox = new joyinfood.labeledCheckbox(alergeni[i].name);
+        alergeniUI.push(labeledCheckbox);
         container.addChild(labeledCheckbox, true);
       }
       container.render(document.getElementById("alergeni"));

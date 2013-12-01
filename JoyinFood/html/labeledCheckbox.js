@@ -30,11 +30,33 @@ joyinfood.labeledCheckbox.prototype.enterDocument = function() {
 };
 
 joyinfood.labeledCheckbox.prototype.handleCheckboxCheck = function () {
-	alert("CHECKBOX_CHECK");
+	var mancareElement = document.getElementById("mancare") !== null ? document.getElementById("mancare") : document.getElementById("mancarelogat");
+	mancareElement.innerHTML = "<p class = \"divp\"> Mancare </p>";
+
+	var mancareContainer = document.getElementById("mancare") !== null ? "mancare" : "mancarelogat";
+
+	var oferteElement = document.getElementById("oferte") !== null ? document.getElementById("oferte") : document.getElementById("ofertelogat");
+	oferteElement.innerHTML = "<p class = \"divp\"> Oferte </p>";
+
+	var oferteContainer = document.getElementById("oferte") !== null ? "oferte" : "ofertelogat";
+
+	populate(produse, mancareContainer);
+	populate(oferte, oferteContainer);
 }
 
 joyinfood.labeledCheckbox.prototype.handleCheckboxUncheck = function () {
-	alert("CHECKBOX_UNCHECK");
+	var mancare = document.getElementById("mancare") !== null ? document.getElementById("mancare") : document.getElementById("mancarelogat");
+	mancare.innerHTML = "<p class = \"divp\"> Mancare </p>";
+
+	var mancareContainer = document.getElementById("mancare") !== null ? "mancare" : "mancarelogat";
+
+	var oferteElement = document.getElementById("oferte") !== null ? document.getElementById("oferte") : document.getElementById("ofertelogat");
+	oferteElement.innerHTML = "<p class = \"divp\"> Oferte </p>";
+
+	var oferteContainer = document.getElementById("oferte") !== null ? "oferte" : "ofertelogat";
+
+	populate(produse, mancareContainer);
+	populate(oferte, oferteContainer);
 }
 
 joyinfood.labeledCheckbox.prototype.createDom = function() {
