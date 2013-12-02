@@ -111,7 +111,11 @@
         container2.addChild(friend, true);
 		var source = new goog.fx.DragDrop(friend.getElement(), friend);
 		source.addTarget(target);
-		source.init();		
+		source.init();
+		for (var i = 0; i < container1.getChildCount(); i++) {
+			if (container1.getChildAt(i).friendName == e.friendName)
+				container1.removeChildAt(i);
+		}
 	}
     </script>
 
