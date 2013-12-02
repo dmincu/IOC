@@ -34,7 +34,9 @@
       goog.require('joyinfood.labeledCheckbox');
       goog.require('joyinfood.joinAlert');
       goog.require('joyinfood.friend');
+	  goog.require('joyinfood.guest');
       goog.require('goog.ui.Container');
+	  goog.require('goog.fx.DragDrop');
     </script>
     <link rel="stylesheet" type="text/css" href="all.css">
   </head>
@@ -59,23 +61,58 @@
     </div> <!-- /container -->
 
     <script>
-      var container = new goog.ui.Container();
+	  var nume = ["Herman Florescu", "Eusebiu Camilar", "Merca Ionel", "Badoiu Simona",
+			"Mincu Diana", "Mihalcea Serban", "Bejgu Andreea", "Sevastian Emma",
+			"Sandu Sorina", "Cilibeanu Leona"];
+      var container1 = new goog.ui.Container();
       for (i = 0; i < 10; i ++) {
-        var friend = i % 2 == 0 ? 
-            new joyinfood.friend("Herman Florescu") :
-            new joyinfood.friend("Eusebiu Camilar");
-        container.addChild(friend, true);
+        //var guest = i % 2 == 0 ?
+        //    new joyinfood.guest("Herman Florescu") :
+        //    new joyinfood.guest("Eusebiu Camilar");
+        //container1.addChild(guest, true);
       }      
-      container.render(document.getElementById("prietenialesi"));
+      container1.render(document.getElementById("prietenialesi"));
+	  var target = new goog.fx.DragDrop(container1.getElement(), container1);
+	  goog.events.listen(target, 'drop', drop);
 
-      var container = new goog.ui.Container();
+      var container2 = new goog.ui.Container();
       for (i = 0; i < 10; i ++) {
-        var friend = i % 2 == 0 ? 
-            new joyinfood.friend("Herman Florescu") :
-            new joyinfood.friend("Eusebiu Camilar");
-        container.addChild(friend, true);
+        var friend = new joyinfood.friend(nume[i]);
+        container2.addChild(friend, true);
+		var source = new goog.fx.DragDrop(friend.getElement(), friend);
+		source.addTarget(target);
+		source.init();
       }      
-      container.render(document.getElementById("alegeprieteni"));
+      container2.render(document.getElementById("alegeprieteni"));
+
+	  goog.events.listen(container2,
+		goog.ui.Component.EventType.ACTION, 				
+		handleCancelButton);
+
+	 function drop(event) {
+		var dropTarget = event.dropTargetItem.data;
+		var child = new joyinfood.guest(event.dragSourceItem.data.friendName, container2, target);
+		var ok = 0;
+
+		for (var i = 0; i < dropTarget.getChildCount(); i++) {
+			if (dropTarget.getChildAt(i).friendName == child.friendName)
+				ok = 1;
+		}
+		if (ok == 0) {
+     		dropTarget.addChild(child, true);
+			container2.removeChild(event.dragSourceItem.data);
+			goog.dispose(event.dragSourceItem.data);
+			goog.dispose(event.dragSourceItem);		
+		}
+     }
+
+	function handleCancelButton(e) {
+        var friend = new joyinfood.friend(e.friendName);
+        container2.addChild(friend, true);
+		var source = new goog.fx.DragDrop(friend.getElement(), friend);
+		source.addTarget(target);
+		source.init();		
+	}
     </script>
 
 
