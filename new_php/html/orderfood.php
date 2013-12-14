@@ -54,9 +54,9 @@ if ( !isset( $_SESSION['myusername'] ) ){
           <p id = "addfriend" class = "divp"><?php echo $_SESSION['myusername'] ?></p>
         </div>
 	  </a>
-      <a href = "createSession.html">
+      <a href = "createSession.html" onclick="onClickAddSession()">
         <div class = "centermenu">
-          <p class = "divp"> Create Session </p>
+          <p id = "createsession" class = "divp"> Create Session </p>
         </div>
       </a>
       <a href = "activesessions.html">
@@ -109,6 +109,10 @@ if ( !isset( $_SESSION['myusername'] ) ){
               "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
 	function onClickAddFriend() {
+		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
+	}
+
+	function onClickAddSession() {
 		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
 	}
 

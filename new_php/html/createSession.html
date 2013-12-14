@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="all.css">
   </head>
 
-  <body style="padding-top: 13%; background-color: #5fb05f">
+  <body style="padding-top: 13%; background-color: #5fb05f" onload="start()">
 
     <div class="container" style="background-color: #5fb05f">
   
@@ -61,22 +61,23 @@
     </div> <!-- /container -->
 
     <script>
-	  var nume = ["Herman Florescu", "Eusebiu Camilar", "Merca Ionel", "Badoiu Simona",
-			"Mincu Diana", "Mihalcea Serban", "Bejgu Andreea", "Sevastian Emma",
-			"Sandu Sorina", "Cilibeanu Leona"];
+
+	function start() {
+	  var username, nume = [];
+
       var container1 = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
-        //var guest = i % 2 == 0 ?
-        //    new joyinfood.guest("Herman Florescu") :
-        //    new joyinfood.guest("Eusebiu Camilar");
-        //container1.addChild(guest, true);
-      }      
+ 
       container1.render(document.getElementById("prietenialesi"));
 	  var target = new goog.fx.DragDrop(container1.getElement(), container1);
 	  goog.events.listen(target, 'drop', drop);
 
       var container2 = new goog.ui.Container();
-      for (i = 0; i < 10; i ++) {
+
+	  nume = handleGetFriendsList();
+
+	  console.log(nume);
+
+      for (i = 0; i < nume.length; i ++) {
         var friend = new joyinfood.friend(nume[i]);
         container2.addChild(friend, true);
 		var source = new goog.fx.DragDrop(friend.getElement(), friend);
@@ -88,6 +89,11 @@
 	  goog.events.listen(container2,
 		goog.ui.Component.EventType.ACTION, 				
 		handleCancelButton);
+	}
+
+	 function setName(othername) {
+		nume = othername;
+	 }
 
 	 function drop(event) {
 		var dropTarget = event.dropTargetItem.data;
@@ -116,6 +122,31 @@
 			if (container1.getChildAt(i).friendName == e.friendName)
 				container1.removeChildAt(i);
 		}
+	}
+
+	function handleGetFriendsList() {
+		var nume = [];
+
+		username = window.localStorage.getItem("username");
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.field = nume;
+		xmlhttp.onreadystatechange = function() {
+		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var s = xmlhttp.responseText.split(" ");
+			var nume = [];
+			for (var i = 1; i < s.length; i += 2) {
+				if (s[i] != "") {
+					nume.push(s[i]);
+				}
+			}
+			setName(nume);
+		  }
+		}
+		
+		xmlhttp.open("GET","getfriends.php?username=" + username, true);
+		xmlhttp.send();
+
+		console.log(nume);
 	}
     </script>
 
