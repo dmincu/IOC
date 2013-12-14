@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ( !isset( $_SESSION['myusername'] ) ){
+  header("location:signin.php");
+}
+?>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,12 +49,14 @@
 
     <div class="container" style="background-color: #5fb05f">
 
-      <div class = "leftmenu">
-        <p class = "divp"> Account </p>
-      </div>
-      <a href = "createSession.html">
+	  <a href = "addfriend.html" onclick="onClickAddFriend()">
+        <div class = "leftmenu">
+          <p id = "addfriend" class = "divp"><?php echo $_SESSION['myusername'] ?></p>
+        </div>
+	  </a>
+      <a href = "createSession.html" onclick="onClickAddSession()">
         <div class = "centermenu">
-          <p class = "divp"> Create Session </p>
+          <p id = "createsession" class = "divp"> Create Session </p>
         </div>
       </a>
       <a href = "activesessions.html">
@@ -100,6 +108,13 @@
      oferte.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
               "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
+	function onClickAddFriend() {
+		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
+	}
+
+	function onClickAddSession() {
+		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
+	}
 
     function populate(data, containerName) {
         var restauranteAll = new Array();

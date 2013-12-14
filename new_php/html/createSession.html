@@ -45,6 +45,20 @@
 
     <div class="container" style="background-color: #5fb05f">
   
+	  <div class = "leftmenu">
+        <p id = "addfriend" class = "divp"></p>
+	  </div>
+	  <a href = "orderfood.php">
+		<div class = "centermenu">
+		  <p id = "back" class = "divp"> Back </p>
+        </div>
+	  </a>
+      <a href = "index.html">
+	    <div class = "rightmenu">
+		  <p class = "divp"> Sign Out </p>
+		</div>
+	  </a>
+
       <form class="form-signin" style="background-color: #5fb05f" method = "post" action = "session.php">
         <h2 class="form-signin-heading" style="color: #010101;">Sesiune noua</h2>
         <input id = "idsesiune" name = "idsesiune" type="text" class="form-control" placeholder="Id Sesiune" required="" autofocus="" style="color: #010101; margin-bottom: 20px; margin-top: 20px;">
@@ -61,21 +75,16 @@
     </div> <!-- /container -->
 
     <script>
-
-	function start() {
-	  var username, nume = [];
-
-      var container1 = new goog.ui.Container();
- 
+	var nume = name;
+    var container1 = new goog.ui.Container();
+	var container2 = new goog.ui.Container();
+	var target;
+	
+    function start(name) {
+ 	  nume = name;
       container1.render(document.getElementById("prietenialesi"));
-	  var target = new goog.fx.DragDrop(container1.getElement(), container1);
+	  target = new goog.fx.DragDrop(container1.getElement(), container1);
 	  goog.events.listen(target, 'drop', drop);
-
-      var container2 = new goog.ui.Container();
-
-	  nume = handleGetFriendsList();
-
-	  console.log(nume);
 
       for (i = 0; i < nume.length; i ++) {
         var friend = new joyinfood.friend(nume[i]);
@@ -87,12 +96,8 @@
       container2.render(document.getElementById("alegeprieteni"));
 
 	  goog.events.listen(container2,
-		goog.ui.Component.EventType.ACTION, 				
-		handleCancelButton);
-	}
-
-	 function setName(othername) {
-		nume = othername;
+	 	goog.ui.Component.EventType.ACTION, 				
+	 	handleCancelButton);
 	 }
 
 	 function drop(event) {
@@ -125,11 +130,9 @@
 	}
 
 	function handleGetFriendsList() {
-		var nume = [];
-
-		username = window.localStorage.getItem("username");
-		xmlhttp=new XMLHttpRequest();
-		xmlhttp.field = nume;
+		var username = window.localStorage.getItem("username");
+		document.getElementById("addfriend").innerHTML = username;
+		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var s = xmlhttp.responseText.split(" ");
@@ -139,16 +142,16 @@
 					nume.push(s[i]);
 				}
 			}
-			setName(nume);
+			xmlhttp.onreadystatechange = null;
+			start(nume);
 		  }
 		}
 		
 		xmlhttp.open("GET","getfriends.php?username=" + username, true);
 		xmlhttp.send();
-
-		console.log(nume);
 	}
     </script>
+
 
 
     <!-- Bootstrap core JavaScript

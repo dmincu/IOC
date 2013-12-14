@@ -30,56 +30,78 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+    <script src="../closure-library/closure/goog/base.js"></script>
+    <script src="deps.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="all.css">
+
   </head>
 
-  <body style="padding-top: 13%; background-color: #5fb05f">
+  <body style="padding-top: 13%; background-color: #5fb05f" onload="init()">
 
-	  <div class="centermenu" style="position: absolute; top: 0px; width: 100%;">
-	  	<button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit" onclick="goback()" style="display:inline-block; width: 50%; position: absolute; top: 5px; left: 0px">Back</button>
-		<button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit" onclick="gohome()" style="display:inline-block; width: 50%; position: absolute; top: 0px; right: 0px">Sign Out</button>
-	  </div>
-
-	// TODO: remove this after checking everything works
-	<button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit" onclick="tryas()">Check</button>
+	    <div class="container" style="background-color: #5fb05f">
+		  <div class = "leftmenu">
+		    <p id = "addfriend" class = "divp"></p>
+		  </div>
+		  <a href = "orderfood.php">
+		    <div class = "centermenu">
+		      <p id = "back" class = "divp"> Back </p>
+		    </div>
+		  </a>
+		  <a href = "index.html">
+		  <div class = "rightmenu">
+		    <p class = "divp"> Sign Out </p>
+		  </div>
+		</div>
 
     <div class="container" style="background-color: #5fb05f">
 
-      <form class="form-signin" style="background-color: #5fb05f" action="addfriend.php" method="post">
+      <form class="form-signin" style="background-color: #5fb05f" onsubmit="addfriend(event)">
         <h2 class="form-signin-heading" style="color: #010101;">Add friend</h2>
-        <input id="myusername" name="myusername" type="text" class="form-control" placeholder="Username" required="" autofocus="" style="color: #010101; margin-bottom: 20px; margin-top: 40px;">
-        <input id= "mypassword" name = "mypassword" type="text" class="form-control" placeholder="Preffered Name" required="" style="color: #010101; margin-bottom: 20px;">
-        <button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit" >Add</button>
+        <input id="myfriend" name="myfriend" type="text" class="form-control" placeholder="Username" required="" autofocus="" style="color: #010101; margin-bottom: 20px; margin-top: 40px;">
+        <input id= "myfriendname" name = "myfriendname" type="text" class="form-control" placeholder="Preffered Name" required="" style="color: #010101; margin-bottom: 20px;">
+        <button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit">Add</button>
       </form>
 
     </div> <!-- /container -->
 
 	<script>
+        goog.require('joyinfood.foodItem');
+        goog.require('joyinfood.labeledCheckbox');
+        goog.require('joyinfood.joinAlert');
+        goog.require('joyinfood.friend');
+        goog.require('goog.ui.Container');
+
 		var username;
 
-		function goback() {
-			window.location = "orderfood.php";
-		}
-
-		function gohome() {
-			window.location = "index.html";
-		}
+		function init() {
+			getUserName();
+			document.getElementById("addfriend").innerHTML = username;
+		};
 
 		function getUserName() {
 			username = window.localStorage.getItem("username");
-			debugger;
 		};
 
-		function tryas() {
+		function addfriend(event) {
+			event.preventDefault();
+
 			getUserName();
 
 			xmlhttp=new XMLHttpRequest();
 			xmlhttp.onreadystatechange=function() {
-			  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				console.log(xmlhttp.responseText);
 			  }
 			}
-			xmlhttp.open("GET","addfriend.php?username=" + username, true);
+			var friend = document.getElementById("myfriend").value;
+			var name = document.getElementById("myfriendname").value;
+			xmlhttp.open("GET","addfriend.php?username=" + username + "&myfriend=" + friend + "&myfriendname=" + name, true);
 			xmlhttp.send();
+
+			document.getElementById("myfriend").value = "";
+			document.getElementById("myfriendname").value = "";
 		};
     </script>
 

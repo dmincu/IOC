@@ -28,14 +28,4 @@ $myfriendname=mysql_real_escape_string($myfriendname);
 $sql="INSERT INTO $tbl_name (username_user, username_friend, name) VALUES (\"$myusername\", \"$myfriend\", \"$myfriendname\")";
 $result=mysql_query($sql);
 
-$sql="SELECT * FROM $tbl_name";
-$result=mysql_query($sql);
-
-while($row = mysql_fetch_array($result)) {
-  echo $row['username_user'] . " " . $row['username_friend'];
-  echo "<br>";
-}
-
-echo $result;
-
 ?>
