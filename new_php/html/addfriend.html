@@ -50,9 +50,10 @@
 		    </div>
 		  </a>
 		  <a href = "index.html">
-		  <div class = "rightmenu">
-		    <p class = "divp"> Sign Out </p>
-		  </div>
+		    <div class = "rightmenu">
+		      <p class = "divp"> Sign Out </p>
+		    </div>
+		  </a>
 		</div>
 
     <div class="container" style="background-color: #5fb05f">
@@ -64,20 +65,74 @@
         <button class="btn btn-lg btn-primary2 btn-block" type="submit" name = "submit">Add</button>
       </form>
 
+	  <div class = "alegeprieteni" id = "alegeprieteni" style="height: 90%">
+        <p class = "divp"> Prietenii mei </p>
+      </div>
+
     </div> <!-- /container -->
 
 	<script>
         goog.require('joyinfood.foodItem');
+		goog.require('joyinfood.guest');
         goog.require('joyinfood.labeledCheckbox');
         goog.require('joyinfood.joinAlert');
         goog.require('joyinfood.friend');
         goog.require('goog.ui.Container');
 
 		var username;
+		var container2;
 
 		function init() {
 			getUserName();
+
 			document.getElementById("addfriend").innerHTML = username;
+
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var s = xmlhttp.responseText.split(" ");
+				var nume = [];
+				for (var i = 1; i < s.length; i += 2) {
+					if (s[i] != "") {
+						nume.push(s[i]);
+					}
+				}
+				xmlhttp.onreadystatechange = null;
+				start(nume);
+			  }
+			}	
+			xmlhttp.open("GET","getfriends.php?username=" + username, true);
+			xmlhttp.send();
+		};
+
+        function start(name) {
+ 	      var nume = name;
+		  document.getElementById("alegeprieteni").innerHTML = "";
+		  container2 = new goog.ui.Container();
+          for (i = 0; i < nume.length; i ++) {
+            var friend = new joyinfood.guest(nume[i], container2);
+            container2.addChild(friend, true);
+          }      
+          container2.render(document.getElementById("alegeprieteni"));
+
+	      goog.events.listen(container2,
+	 	    goog.ui.Component.EventType.ACTION, 				
+	 	    handleCancelButton);
+	    };
+
+		function handleCancelButton(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				console.log(xmlhttp.responseText);
+				xmlhttp.onreadystatechange = null;
+			  }
+			}
+			xmlhttp.open("GET","deletefriend.php?username=" + username + "&myfriend=" + e.target.friendName, true);
+			xmlhttp.send();
 		};
 
 		function getUserName() {
@@ -93,6 +148,7 @@
 			xmlhttp.onreadystatechange=function() {
 			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				console.log(xmlhttp.responseText);
+				init();
 			  }
 			}
 			var friend = document.getElementById("myfriend").value;
