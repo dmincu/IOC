@@ -49,9 +49,11 @@ if ( !isset( $_SESSION['myusername'] ) ){
 
     <div class="container" style="background-color: #5fb05f">
 
-      <div class = "leftmenu">
-        <p class = "divp"> <?php echo $_SESSION['myusername'] ?> </p>
-      </div>
+	  <a href = "addfriend.html" onclick="onClickAddFriend()">
+        <div class = "leftmenu">
+          <p id = "addfriend" class = "divp"><?php echo $_SESSION['myusername'] ?></p>
+        </div>
+	  </a>
       <a href = "createSession.html">
         <div class = "centermenu">
           <p class = "divp"> Create Session </p>
@@ -106,6 +108,9 @@ if ( !isset( $_SESSION['myusername'] ) ){
      oferte.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
               "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
+	function onClickAddFriend() {
+		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
+	}
 
     function populate(data, containerName) {
         var restauranteAll = new Array();

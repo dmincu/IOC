@@ -1,8 +1,11 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 $host="localhost"; // Host name
 $username="root"; // Mysql username
-$password=""; // Mysql password
+$password="Paracocci23#"; // Mysql password
 $db_name="joyinfood"; 
 $tbl_name="users"; // Table name 
 

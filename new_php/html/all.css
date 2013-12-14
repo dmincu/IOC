@@ -159,7 +159,7 @@ div.oferte {
 	height: 29%;
 	width: 74%;
 	position: absolute;
-	top:35px;
+	top:40px;
 	border-radius: 10px;
 	left:25%;
 	padding: 5px;
@@ -171,7 +171,7 @@ div.restaurante {
 	height: 29%;
 	width: 24%;
 	position: absolute;
-	top: 35px;
+	top: 40px;
 	border-radius: 10px;
 	left: 0;
 	margin: 5px;
@@ -206,7 +206,7 @@ div.alergeni {
 
 div.leftmenu { 
 	background-color: lightgreen;
-	height: 5%;
+	height: 37px;
 	width: 33%;
 	z-index: 9999;
 	margin: 3px;
@@ -219,7 +219,7 @@ div.leftmenu {
 div.centermenu { 
 	background-color: lightgreen;
 	text-color: black;
-	height: 5%;
+	height: 37px;
 	width: 33%;
 	z-index: 9999;
 	margin: 3px;
@@ -233,7 +233,7 @@ div.centermenu {
 div.rightmenu { 
 	background-color: lightgreen;
 	text-color: black;
-	height: 5%;
+	height: 37px;
 	width: 33%;
 	z-index: 9999;
 	margin: 3px;
