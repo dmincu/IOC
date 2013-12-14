@@ -46,6 +46,22 @@ CREATE TABLE IF NOT EXISTS `friends` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
+CREATE TABLE IF NOT EXISTS `sesiuni` (
+  `id_sesiune` int(11) NOT NULL AUTO_INCREMENT,
+  `nume` varchar(30) NOT NULL,
+  `adresa` varchar(30) NOT NULL,
+  `telefon` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_sesiune`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+
+CREATE TABLE IF NOT EXISTS `asoc_user_sesiune` (
+  `id_asoc` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sesiune` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_asoc`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
 --
 -- Salvarea datelor din tabel `users`
 --
