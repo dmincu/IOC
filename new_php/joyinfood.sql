@@ -62,6 +62,15 @@ CREATE TABLE IF NOT EXISTS `asoc_user_sesiune` (
   PRIMARY KEY (`id_asoc`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
+CREATE TABLE IF NOT EXISTS `comanda` (
+  `idcomanda` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sesiune` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `nume_mancare` varchar(30) NOT NULL,
+  `nume_restaurant` varchar(30) NOT NULL,
+  PRIMARY KEY(`idcomanda`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
 --
 -- Salvarea datelor din tabel `users`
 --
