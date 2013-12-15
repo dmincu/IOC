@@ -17,6 +17,7 @@ $nume		= $_POST['idsesiune'];
 $adresa		= $_POST['adresa'];
 $telefon	= $_POST['numar'];
 
+setcookie("sesiune", $nume, time()+3600);
 
 $sql1 = "INSERT into $tbl_session  VALUES (default, '$nume', '$adresa', '$telefon')";
 

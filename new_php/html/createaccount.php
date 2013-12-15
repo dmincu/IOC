@@ -50,8 +50,6 @@ session_start();
 // Register $myusername, $mypassword and redirect to file 
 
 setcookie("user", "", time()-3600);
-
-
 setcookie("user", $myusername, time()+3600);
 
 header("location:orderfood.php");

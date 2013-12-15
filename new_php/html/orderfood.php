@@ -48,7 +48,7 @@
           <p id = "addfriend" class = "divp"><?php echo $_COOKIE["user"] ?></p>
         </div>
 	  </a>
-      <a href = "createSession.html" onclick="onClickAddSession()">
+      <a href = "createSession.php" onclick="onClickAddSession()">
         <div class = "centermenu">
           <p id = "createsession" class = "divp"> Create Session </p>
         </div>

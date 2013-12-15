@@ -45,12 +45,12 @@
       <div class = "leftmenu">
 		<a href = "addfriend.html" onclick="onClickAddFriend()">
 			<div class = "leftmenu">
-				<p id = "addfriend" class = "divp"><?php echo $_SESSION['myusername'] ?></p>
+				<p id = "addfriend" class = "divp"><?php echo $_COOKIE["user"] ?></p>
 			</div>
 		</a>
       </div>
       <div class = "centermenu">
-        <p class = "divp"> Session </p>
+        <p class = "divp"> <?php echo $_COOKIE["sesiune"] ?> </p>
       </div>
     <a href = "finishorder.html">
       <div class = "rightmenu">

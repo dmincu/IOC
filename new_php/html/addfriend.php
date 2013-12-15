@@ -3,13 +3,13 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-$myusername=$_GET['username'];
+$myusername=$_COOKIE["user"];
 $myfriend=$_GET['myfriend'];
 $myfriendname=$_GET['myfriendname'];
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username
-$password="Paracocci23#"; // Mysql password
+$password=""; // Mysql password
 $db_name="joyinfood"; 
 $tbl_name="friends"; // Table name 
 
@@ -27,5 +27,5 @@ $myfriendname=mysql_real_escape_string($myfriendname);
 
 $sql="INSERT INTO $tbl_name (username_user, username_friend, name) VALUES (\"$myusername\", \"$myfriend\", \"$myfriendname\")";
 $result=mysql_query($sql);
-
+echo $result;
 ?>
