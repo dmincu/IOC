@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="all.css">
   </head>
 
-  <body style="padding-top: 13%; background-color: #5fb05f" onload="start()">
+  <body style="padding-top: 13%; background-color: #5fb05f" onload="handleGetFriendsList()">
 
     <div class="container" style="background-color: #5fb05f">
   
@@ -76,7 +76,7 @@
     </div> <!-- /container -->
 
     <script>
-	var nume = name;
+	var nume;
     var container1 = new goog.ui.Container();
 	var container2 = new goog.ui.Container();
 	var target;

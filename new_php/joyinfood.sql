@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `asoc_user_sesiune` (
   `id_asoc` int(11) NOT NULL AUTO_INCREMENT,
   `id_sesiune` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `is_creator` int(2) NOT NULL,
   PRIMARY KEY (`id_asoc`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -68,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `comanda` (
   `username` varchar(30) NOT NULL,
   `nume_mancare` varchar(30) NOT NULL,
   `nume_restaurant` varchar(30) NOT NULL,
+  `pret` float(8, 4) NOT NULL,
   PRIMARY KEY(`idcomanda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -81,6 +83,13 @@ INSERT INTO `users` (`id`, `username`, `parola`, `telefon`) VALUES
 (3, 'admin', 'admin', '54123131'),
 (4, 'diana', 'diana', '123819283901'),
 (5, 'serban', 'serban', '12151231231231');
+
+INSERT INTO `sesiuni` (`id_sesiune`, `name`) VALUES (1, 'asdf');
+
+INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
+ VALUES (1, 'diana', 'Pizza', 'SprintTime', '12.00');
+INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
+ VALUES (1, 'merca', 'Sarmale', 'PizzaHut', '10.00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

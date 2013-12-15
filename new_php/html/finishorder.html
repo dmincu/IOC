@@ -2,7 +2,7 @@
   <head>
 
   <script>
-  function.hrefopen()
+  function hrefopen()
   {
   window.open("index.html");
   }
@@ -36,19 +36,64 @@
     <![endif]-->
   </head>
 
-  <body style="padding-top: 13%; background-color: #5fb05f">
+  <body style="padding-top: 13%; background-color: #5fb05f" onload="handleGetOrderList()">
 
-    <div class="container" style="background-color: #5fb05f">
+    <div class="container" style="background-color: #5fb05f; margin-left: 235px;">
 
-      <form class="form-signin" style="background-color: #5fb05f" action="orderfood.html">
+      <form class="form-signin" style="background-color: #5fb05f; width: 500px;" action="orderfood.html">
         <h2 class="form-signin-heading" style="color: #010101;">Order Details</h2>
-        <textarea class="form-control" rows="4" cols="50" id = "detalii">
-        At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-        </textarea>
-        <button class="btn btn-lg btn-primary2 btn-block" type="submit" >Finish Order</button>
+        <table class="table table-bordered" style="background-color: white; width: 500px;" id = "detalii">
+        
+        </table>
+        <table class="table table-bordered" style="background-color: white; width: 500px;" id = "totals">
+        
+        </table>
+        <button class="btn btn-lg btn-primary2 btn-block" type="submit" style="margin-top: 20px; width: 500px">Finish Order</button>
       </form>
     </div> <!-- /container -->
 
+
+    <script>
+		function start(users, food, restaurant, pret) {
+			var textarea = document.getElementById('detalii');
+			var table2 = document.getElementById('totals');		
+			var text = "<tr><td>#</td><td>Nume</td><td>Item comandat</td><td>Restaurant</td><td>Pret</td></tr>";
+			var total = 0;		
+			for (var i = 0; i < users.length; i++) {
+				text += "<tr>" + "<td>" + i + "</td>" + "<td>" + users[i] + "</td>" + "<td>" + food[i] + "</td>" + "<td>" + restaurant[i] + "</td>" + "<td>" + pret[i] + "</td>" + "</tr>";
+				total += parseFloat(pret[i]);			
+			}
+			table2.innerHTML = "<tr style=\"height: 10px;\">" + "<td>Total: " + total + "</td></tr>";
+			textarea.innerHTML = text;
+		};
+
+		function handleGetOrderList() {
+			var username = 
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var s = xmlhttp.responseText.split(" ");
+				var users = [];
+				var food = [];
+				var restaurant = [];
+				var pret = [];
+				for (var i = 0; i < s.length; i += 4) {
+					if (s[i] != "") {
+						users.push(s[i]);
+						food.push(s[i + 1]);
+						restaurant.push(s[i + 2]);
+						pret.push(s[i + 3]);
+					}
+				}
+				xmlhttp.onreadystatechange = null;
+				start(users, food, restaurant, pret);
+			  }
+			}
+		
+			xmlhttp.open("GET","getorder.php", true);
+			xmlhttp.send();
+	  }
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
