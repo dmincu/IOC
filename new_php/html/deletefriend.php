@@ -8,7 +8,7 @@ $myfriend=$_GET['myfriend'];
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username
-$password="Paracocci23#"; // Mysql password
+$password=""; // Mysql password
 $db_name="joyinfood"; 
 $tbl_name="friends"; // Table name 
 
