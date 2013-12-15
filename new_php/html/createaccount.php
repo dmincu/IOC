@@ -48,8 +48,12 @@ session_destroy();
 session_start();
 
 // Register $myusername, $mypassword and redirect to file 
-$_SESSION['myusername']=$myusername;
-$_SESSION['mypassword']=$mypassword;
+
+setcookie("user", "", time()-3600);
+
+
+setcookie("user", $myusername, time()+3600);
+
 header("location:orderfood.php");
 exit();
 ?>

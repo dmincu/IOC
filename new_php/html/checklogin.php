@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username
-$password="Paracocci23#"; // Mysql password
+$password=""; // Mysql password
 $db_name="joyinfood"; 
 $tbl_name="users"; // Table name 
 
@@ -35,11 +35,12 @@ session_start();
 session_destroy();
 session_start();
 
+setcookie("user", "", time()-3600);
+
 if($count==1){
 
 	// Register $myusername, $mypassword and redirect to file "login_success.php"
-	$_SESSION['myusername']=$myusername;
-	$_SESSION['mypassword']=$mypassword;
+	setcookie("user", $myusername, time()+3600);
 	header("location:orderfood.php");
 }
 else {

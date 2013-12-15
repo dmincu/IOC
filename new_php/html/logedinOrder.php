@@ -26,7 +26,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
     <script src="../closure-library/closure/goog/base.js"></script>
     <script src="deps.js"></script>
     <script>
@@ -43,25 +42,25 @@
 
     <div class="container" style="background-color: #5fb05f">
 
-	  <a href = "addfriend.html" onclick="onClickAddFriend()">
-        <div class = "leftmenu">
-          <p id = "addfriend" class = "divp"><?php echo $_COOKIE["user"] ?></p>
-        </div>
-	  </a>
-      <a href = "createSession.html" onclick="onClickAddSession()">
-        <div class = "centermenu">
-          <p id = "createsession" class = "divp"> Create Session </p>
-        </div>
-      </a>
-      <a href = "activesessions.html">
-      <div class = "rightmenu">
-        <p class = "divp"> Join Session </p>
+      <div class = "leftmenu">
+		<a href = "addfriend.html" onclick="onClickAddFriend()">
+			<div class = "leftmenu">
+				<p id = "addfriend" class = "divp"><?php echo $_SESSION['myusername'] ?></p>
+			</div>
+		</a>
       </div>
-      </a>
-      <div class = "oferte" id = "oferte">
+      <div class = "centermenu">
+        <p class = "divp"> Session </p>
+      </div>
+    <a href = "finishorder.html">
+      <div class = "rightmenu">
+        <p class = "divp"> Order </p>
+      </div>
+    </a>
+      <div class = "ofertelogat" id = "ofertelogat">
         <p class = "divp"> Oferte </p>
       </div>
-      <div class = "mancare" id = "mancare">
+      <div class = "mancarelogat" id = "mancarelogat">
         <p class = "divp"> Mancare </p>
       </div>
        <div class = "restaurante" id = "restaurante">
@@ -73,10 +72,14 @@
       <div class = "alergeni" id = "alergeni">
         <p class = "divp"> Alergeni </p>
       </div>
+      <div class = "deplata">
+        <p class = "divp"> De Plata Restaurant </p>
+        <p class = "divp"> De Plata Participant </p>
+      </div>
     </div> <!-- /container -->
 
-    <script>
-      //dummy database
+     <script>
+     //dummy database
      var restaurante = new Array();
      var restauranteUI = new Array();
      restaurante.push({name: "SpringTime"});
@@ -102,13 +105,6 @@
      oferte.push({imageUrl: "pizza.jpg", name: "Pizza", information:"Aceasta mancare este alt pisat..", price: "12.00 lei", restaurant:
               "SpringTime", alergeni: "lapte", categorie: "Fast-Food"});
 
-	function onClickAddFriend() {
-		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
-	}
-
-	function onClickAddSession() {
-		window.localStorage.setItem("username", document.getElementById("addfriend").innerHTML);
-	}
 
     function populate(data, containerName) {
         var restauranteAll = new Array();
@@ -182,9 +178,9 @@
       }
       container.render(document.getElementById("alergeni"));
 
-      populate(produse, "mancare");
+      populate(produse, "mancarelogat");
 
-      populate(oferte, "oferte");
+      populate(oferte, "ofertelogat");
     </script>
 
 
