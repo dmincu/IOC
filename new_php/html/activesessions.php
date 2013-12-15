@@ -37,12 +37,12 @@
       <div class = "activeup">
         <p class = "divp"> Active Sessions </p>
       </div>
-      <a href = "orderfood.html">
+      <a href = "orderfood.php">
 	  <div class = "activeback">
         <p class = "divp"> Back </p>
       </div>
       </a>
-	  <div id = "sesiuni" style="background-color : #5fb055; left:auto; right:auto; position : relative; z-index:99; height:80%;">
+	  <div id = "sesiuni" style="background-color : #5fb05f; left:auto; right:auto; position : relative; z-index:99; height:80%;">
 	  <?php
 
 		error_reporting(E_ALL);
@@ -68,7 +68,9 @@
 		$result=mysql_query($sql);
 
 		while($row = mysql_fetch_array($result)) {
-		  echo $row['nume'];
+		  echo "<div style = \"background-color : #5fb050;  margin-left:auto; margin-right:auto; position : relative; z-index:99; height:30px; width: 180px;  border:1px; border-radius:20px; border-style:solid; border-color:black\">";
+		  echo "<a href=\"joinsession.php?sesiune=" . $row['nume'] . "\"> <p align=\"center\"> " . $row['nume'] . "</p> </a>";
+		  echo "</div>";
 		  echo " ";
 		}
 

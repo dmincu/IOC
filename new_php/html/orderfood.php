@@ -53,7 +53,7 @@
           <p id = "createsession" class = "divp"> Create Session </p>
         </div>
       </a>
-      <a href = "activesessions.html">
+      <a href = "activesessions.php">
       <div class = "rightmenu">
         <p class = "divp"> Join Session </p>
       </div>
