@@ -84,7 +84,7 @@ INSERT INTO `users` (`id`, `username`, `parola`, `telefon`) VALUES
 (4, 'diana', 'diana', '123819283901'),
 (5, 'serban', 'serban', '12151231231231');
 
-INSERT INTO `sesiuni` (`id_sesiune`, `name`) VALUES (1, 'asdf');
+INSERT INTO `sesiuni` (`id_sesiune`, `nume`) VALUES (1, 'asdf');
 
 INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
  VALUES (1, 'diana', 'Pizza', 'SprintTime', '12.00');
