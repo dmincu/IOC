@@ -84,12 +84,10 @@ INSERT INTO `users` (`id`, `username`, `parola`, `telefon`) VALUES
 (4, 'diana', 'diana', '123819283901'),
 (5, 'serban', 'serban', '12151231231231');
 
-INSERT INTO `sesiuni` (`id_sesiune`, `nume`) VALUES (1, 'asdf');
-
 INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
- VALUES (1, 'diana', 'Pizza', 'SprintTime', '12.00');
+ VALUES (6, 'diana', 'Pizza', 'SprintTime', '12.00');
 INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
- VALUES (1, 'merca', 'Sarmale', 'PizzaHut', '10.00');
+ VALUES (6, 'merca', 'Sarmale', 'PizzaHut', '10.00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

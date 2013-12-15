@@ -40,7 +40,7 @@
 
     <div class="container" style="background-color: #5fb05f; margin-left: 235px;">
 
-      <form class="form-signin" style="background-color: #5fb05f; width: 500px;" action="orderfood.html">
+      <form class="form-signin" style="background-color: #5fb05f; width: 500px;" action="#">
         <h2 class="form-signin-heading" style="color: #010101;">Order Details</h2>
         <table class="table table-bordered" style="background-color: white; width: 500px;" id = "detalii">
         
@@ -48,7 +48,7 @@
         <table class="table table-bordered" style="background-color: white; width: 500px;" id = "totals">
         
         </table>
-        <button class="btn btn-lg btn-primary2 btn-block" type="submit" style="margin-top: 20px; width: 500px">Finish Order</button>
+        <button class="btn btn-lg btn-primary2 btn-block" type="submit" style="margin-top: 20px; width: 500px;" onclick="finishOrder(event)">Finish Order</button>
       </form>
     </div> <!-- /container -->
 
@@ -65,6 +65,20 @@
 			}
 			table2.innerHTML = "<tr style=\"height: 10px;\">" + "<td>Total: " + total + "</td></tr>";
 			textarea.innerHTML = text;
+		};
+
+		function finishOrder() {
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				 window.location = "orderfood.php";
+			  }
+			}
+		
+			xmlhttp.open("GET","deleteOrder.php", true);
+			xmlhttp.send();
+
+			event.preventDefault();
 		};
 
 		function handleGetOrderList() {
@@ -92,7 +106,7 @@
 		
 			xmlhttp.open("GET","getorder.php", true);
 			xmlhttp.send();
-	  }
+	  };
     </script>
 
     <!-- Bootstrap core JavaScript
