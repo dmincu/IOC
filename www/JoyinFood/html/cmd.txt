@@ -1,3 +1,0 @@
-C:\Users\Serban\Desktop\Closure Base>C:\Python27\python.exe closure-library/clos
-ure/bin/build/depswriter.py --root_with_prefix="Joyinfood ../../../Joyinfood" >>
- Joyinfood/deps.js

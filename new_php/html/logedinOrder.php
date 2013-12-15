@@ -73,8 +73,90 @@
         <p class = "divp"> Alergeni </p>
       </div>
       <div class = "deplata">
-        <p class = "divp"> De Plata Restaurant </p>
-        <p class = "divp"> De Plata Participant </p>
+        <p class = "divp">
+			De Plata Restaurant
+			<?php 
+				
+				error_reporting(E_ALL);
+				ini_set("display_errors", 1);
+
+				$myusername= $_COOKIE['user'];
+				$nume_sesiune = $_COOKIE["sesiune"];
+				
+				$host="localhost"; // Host name
+				$username="root"; // Mysql username
+				$password=""; // Mysql password
+				$db_name="joyinfood"; 
+				$tbl_name="sesiuni"; // Table name 
+
+				// Connect to server and select databse.
+				mysql_connect("$host", "$username", "$password") or die("cannot connect");
+				mysql_select_db("$db_name") or die("cannot select DB");
+
+				// To protect MySQL injection (more detail about MySQL injection)
+				$myusername=stripslashes($myusername);
+				$myusername=mysql_real_escape_string($myusername);
+
+				$sql="SELECT id_sesiune FROM $tbl_name where nume = '" . $nume_sesiune . "'";
+				$result=mysql_query($sql);
+
+				$row = mysql_fetch_array($result);
+				$id_sesiune = $row['id_sesiune'];
+				
+				$tbl_comanda = "comanda";
+				
+				$sql1="SELECT nume_restaurant, sum(pret) FROM $tbl_comanda  where id_sesiune = '" . $id_sesiune . "' and username = '" . $myusername . "' group by nume_restaurant";
+				
+				$result=mysql_query($sql1);
+
+				while($row = mysql_fetch_array($result)) {
+				  echo $row['nume_restaurant'] . " : " . $row['sum(pret)'];
+				  echo " ";
+				}
+			?>
+		</p>
+        <p class = "divp"> 
+			De Plata Participant 
+			<?php 
+				
+				error_reporting(E_ALL);
+				ini_set("display_errors", 1);
+
+				$myusername= $_COOKIE['user'];
+				$nume_sesiune = $_COOKIE["sesiune"];
+				
+				$host="localhost"; // Host name
+				$username="root"; // Mysql username
+				$password=""; // Mysql password
+				$db_name="joyinfood"; 
+				$tbl_name="sesiuni"; // Table name 
+
+				// Connect to server and select databse.
+				mysql_connect("$host", "$username", "$password") or die("cannot connect");
+				mysql_select_db("$db_name") or die("cannot select DB");
+
+				// To protect MySQL injection (more detail about MySQL injection)
+				$myusername=stripslashes($myusername);
+				$myusername=mysql_real_escape_string($myusername);
+
+				$sql="SELECT id_sesiune FROM $tbl_name where nume = '" . $nume_sesiune . "'";
+				$result=mysql_query($sql);
+
+				$row = mysql_fetch_array($result);
+				$id_sesiune = $row['id_sesiune'];
+				
+				$tbl_comanda = "comanda";
+				
+				$sql1="SELECT username, sum(pret) FROM $tbl_comanda  where id_sesiune = '" . $id_sesiune . "' and username = '" . $myusername . "' group by username";
+				
+				$result=mysql_query($sql1);
+
+				while($row = mysql_fetch_array($result)) {
+				  echo $row['username'] . " : " . $row['sum(pret)'];
+				  echo " ";
+				}
+			?>
+		</p>
       </div>
     </div> <!-- /container -->
 

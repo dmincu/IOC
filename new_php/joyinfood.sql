@@ -88,6 +88,8 @@ INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restauran
  VALUES (6, 'diana', 'Pizza', 'SprintTime', '12.00');
 INSERT INTO `comanda` (`id_sesiune`, `username`, `nume_mancare`, `nume_restaurant`, `pret`)
  VALUES (6, 'merca', 'Sarmale', 'PizzaHut', '10.00');
+INSERT INTO `sesiuni` (`id_sesiune`, `nume`, `adresa`, `telefon`)
+ VALUES (1, 'asdf', 'Adresa', '1409289012');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

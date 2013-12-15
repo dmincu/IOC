@@ -39,7 +39,15 @@ joyinfood.foodItem.prototype.enterDocument = function() {
 };
 
 joyinfood.foodItem.prototype.handleButtonClick = function () {
-	alert("FOODITEM_SELECTED");
+	// aici sa fac ceva 
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function() {
+	  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		console.log(xmlhttp.responseText);
+	  }
+	}
+	xmlhttp.open("GET","add_food.php?mancare=" + this.itemName + "&restaurant=" + this.restaurant + "&pret=" + this.itemPrice, true);
+	xmlhttp.send();
 }
 
 joyinfood.foodItem.prototype.createDom = function() {
